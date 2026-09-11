@@ -1,0 +1,322 @@
+/* ============================================================
+   YOUR STYLES
+
+   This file loads AFTER simple.css in the HTML, so anything you
+   write here wins. That order is called the cascade. If you put
+   this link above simple.css instead, none of it will work.
+
+   Simple.css already styles every HTML element. You are not
+   starting from nothing. You are adjusting something.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. FONTS
+
+   Use clean system sans-serif fonts throughout the site.
+   No external font download is needed.
+   ------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------
+   2. VARIABLES
+
+   These names come from simple.css. Changing a value here
+   changes it everywhere on every page at once.
+
+   Change all of them. The point is that your site does not
+   look like the starter.
+   ------------------------------------------------------------ */
+
+:root, ::backdrop {
+
+  /* --- type --- */
+  --sans-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --heading-font: var(--sans-font);
+  --mono-font: var(--sans-font);
+
+  /* --- color --- */
+  --bg:          #FCFBF9;   /* page background */
+  --accent-bg:   #F1EFEA;   /* boxes, table headers, quote backgrounds */
+  --text:        #1B1B1D;   /* body text */
+  --text-light:  #63636B;   /* captions and secondary text */
+  --border:      #D7D4CC;   /* rules and outlines */
+  --accent:      #1F5C4A;   /* links */
+  --accent-hover:#2E8268;
+  --accent-text: var(--bg); /* text sitting on top of accent */
+  --code:        #9A2A5C;
+  --marked:      #F5E06B;   /* highlighter color for <mark> */
+
+  --standard-border-radius: 3px;
+}
+
+
+/* ------------------------------------------------------------
+   3. ADJUSTMENTS
+
+   Simple.css does not have a heading font variable, so this
+   applies mine. Delete it if you only want one typeface.
+   ------------------------------------------------------------ */
+
+body {
+  font-family: var(--sans-font);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.6rem; line-height: 1.1; }
+
+/* Dates and captions */
+time { color: var(--text-light); }
+
+figcaption { font-size: 0.9rem; }
+
+/* Simple.css centers the header. This left-aligns it. */
+header { text-align: left; padding-bottom: 1.5rem; }
+header > nav { margin-top: 0.5rem; }
+
+
+/* ------------------------------------------------------------
+   4. YOUR CSS
+
+   Write below here so you can always find your own work.
+   ------------------------------------------------------------ */
+
+/* Homepage background photo: Andrea De Santis / Unsplash.
+   https://unsplash.com/photos/uCFuP0Gc_MM */
+body.home-page {
+  --bg: #101114;
+  --accent-bg: #292929;
+  --text: #fff;
+  --text-light: #fff;
+  --accent: #fff;
+  --accent-hover: #fff;
+  --border: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background-color: #101114;
+  background-image: linear-gradient(rgba(8, 10, 14, 0.65), rgba(8, 10, 14, 0.78)),
+                    url('../images/dark-city-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body.home-page > header {
+  background: #292929;
+  color: #fff;
+}
+
+.home-page a,
+.home-page a:visited,
+.home-page time,
+.home-page > footer {
+  color: #fff;
+}
+
+.home-page header nav a,
+.home-page header nav a:visited {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.home-page header nav a:hover,
+.home-page header nav a[aria-current="page"] {
+  color: #fff;
+  background: #414141;
+  border-color: #fff;
+}
+
+.home-page a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 720px) {
+  body.home-page {
+    background-attachment: scroll;
+  }
+}
+
+/* Apex Predator entry */
+body.predator-page {
+  --predator-cycle: 2.6s;
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  padding: clamp(24px, 5vw, 64px);
+  background: #000;
+  color: #fff;
+}
+
+.predator-page main {
+  container-type: inline-size;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.predator-page .back-link {
+  display: inline-block;
+  color: #fff;
+  font-size: 1rem;
+  text-underline-offset: 5px;
+}
+
+.predator-page a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 6px;
+}
+
+.predator-page h1 {
+  margin: clamp(40px, 7vh, 80px) 0 40px;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  text-align: center;
+  color: #8b141e;
+}
+
+/* Title band is 1.5 times wider than before, with a pure-white center. */
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .predator-page h1 {
+    --title-glow-half: min(54cqw, 367.2px);
+    background-image: linear-gradient(to right,
+      #8b141e calc(50% - var(--title-glow-half)),
+      #cf614c calc(50% - var(--title-glow-half) * 0.75),
+      #ffc68f calc(50% - var(--title-glow-half) * 0.45),
+      #fff0d8 calc(50% - var(--title-glow-half) * 0.2),
+      #fff calc(50% - var(--title-glow-half) * 0.08),
+      #fff calc(50% + var(--title-glow-half) * 0.08),
+      #fff0d8 calc(50% + var(--title-glow-half) * 0.2),
+      #ffc68f calc(50% + var(--title-glow-half) * 0.45),
+      #cf614c calc(50% + var(--title-glow-half) * 0.75),
+      #8b141e calc(50% + var(--title-glow-half)));
+    background-size: 300% 100%;
+    background-repeat: no-repeat;
+    background-position: 100% center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: predator-title-sweep var(--predator-cycle) linear infinite;
+  }
+}
+
+@keyframes predator-title-sweep {
+  0% { background-position: 100% center; }
+  90%, 100% { background-position: 0% center; }
+}
+
+.predator-page .predator-badge {
+  display: block;
+  width: min(100%, 680px);
+  height: auto;
+  margin: 0 auto;
+}
+
+.predator-emblem {
+  container-type: inline-size;
+  --predator-flash-brightness: 1.9;
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 680px);
+  margin: 0 auto;
+}
+
+.predator-rank {
+  position: absolute;
+  left: 49.5%;
+  top: 70.4%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: #fff;
+  font-size: clamp(16px, 8cqw, 54px);
+  font-family: 'Cascadia Code', Consolas, 'Courier New', monospace;
+  font-weight: 400;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.predator-emblem .predator-badge {
+  animation: predator-badge-flash var(--predator-cycle) ease-in-out infinite;
+}
+
+/* A CSS-only gradient softens the scan edges without loading a mask image. */
+.predator-emblem .predator-scan {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  filter: brightness(4.2) saturate(0.55);
+  --scan-feather: linear-gradient(to bottom,
+    transparent 44%, rgba(0, 0, 0, 0.15) 46%,
+    #000 49%, #000 51%,
+    rgba(0, 0, 0, 0.15) 54%, transparent 56%);
+  -webkit-mask-image: var(--scan-feather);
+  mask-image: var(--scan-feather);
+  -webkit-mask-size: 100% 300%;
+  mask-size: 100% 300%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center 84%;
+  mask-position: center 84%;
+  animation: predator-light-sweep var(--predator-cycle) linear infinite;
+}
+
+/* The scan still ends at 2.34s. */
+@keyframes predator-light-sweep {
+  0% {
+    -webkit-mask-position: center 84%;
+    mask-position: center 84%;
+  }
+  90%, 100% {
+    -webkit-mask-position: center 16%;
+    mask-position: center 16%;
+  }
+}
+
+/* Start at 1.34s; rise 0.208333s, hold 0.416667s, fade 0.541667s. */
+@keyframes predator-badge-flash {
+  0%, 51.538462%, 96.410256%, 100% {
+    filter: brightness(1);
+  }
+  59.551282%, 75.576923% {
+    filter: brightness(var(--predator-flash-brightness));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.predator-page {
+    --predator-cycle: 6s;
+  }
+  .predator-emblem {
+    --predator-flash-brightness: 1.3;
+  }
+  .predator-emblem .predator-badge {
+    animation-name: predator-badge-flash-slow;
+    animation-delay: 4.4s;
+  }
+  .predator-emblem .predator-scan {
+    filter: brightness(2.2) saturate(0.7);
+  }
+}
+
+/* The delayed pulse can finish across the six-second scan loop without a cut. */
+@keyframes predator-badge-flash-slow {
+  0%, 31.25%, 100% {
+    filter: brightness(1);
+  }
+  3.472222%, 10.416667% {
+    filter: brightness(var(--predator-flash-brightness));
+  }
+}
